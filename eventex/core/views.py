@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-from django.contrib.gis.geoip2 import GeoIP2
 from django.core.mail import send_mail
 
 # Create your views here.
@@ -10,6 +9,6 @@ def home(request):
     ip = request.META.get('REMOTE_ADDR')
 
     send_mail('Novo Visitante no Eventex', 'IP: ' + ip, mail_from,
-              [mail_to], fail_silently=True)
+              [mail_to], fail_silently=False)
 
     return render(request, 'index.html')
