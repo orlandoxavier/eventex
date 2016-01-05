@@ -2,7 +2,9 @@
 
 Sistema de eventos encomendado pela Morena
 
-[![Build Status](https://travis-ci.org/orlandoxavier/eventex.svg?branch=master)](https://travis-ci.org/orlandoxavier/eventex) [![Code Climate](https://codeclimate.com/github/orlandoxavier/eventex/badges/gpa.svg)](https://codeclimate.com/github/orlandoxavier/eventex)
+[![Build Status](https://travis-ci.org/orlandoxavier/eventex.svg?branch=master)](https://travis-ci.org/orlandoxavier/eventex)
+
+[![Code Climate](https://codeclimate.com/github/orlandoxavier/eventex/badges/gpa.svg)](https://codeclimate.com/github/orlandoxavier/eventex)
 
 ## Como desenvolver?
 
