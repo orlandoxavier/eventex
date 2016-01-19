@@ -40,6 +40,10 @@ class SubscriptionFormTest(TestCase):
         form = self.make_validated_form(phone='')
         self.assertFalse(form.errors)
 
+    def test_phone_none_email_invalid(self):
+        form = self.make_validated_form(phone='', email='orlandoxavier.sh')
+        self.assertIn('email', form.errors)
+
     def test_inform_email_or_phone(self):
         """Email and form are optional, but one must be informed."""
         form = self.make_validated_form(email='', phone='')
