@@ -10,6 +10,8 @@
         <p>Ainda não existem palestras pela manhã.</p>
         {% endfor %}
 
+        <hr/>
+
         <h2>Tarde</h2>
         {% for talk in afternoon_talks %}
         {% include 'core/talk_list_snippet.html' with talk=talk only %}

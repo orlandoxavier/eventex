@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
+from eventex.core.admin import TalkModelAdmin
 from eventex.core.models import Talk, Speaker
 
 
@@ -44,13 +45,6 @@ class TalkListGet(TestCase):
         for key in variables:
             with self.subTest():
                 self.assertIn(key, self.resp.context)
-
-    def test_display_talk_speakers(self):
-        talk = Talk.objects.create(title='Título da Palestra', start='10:00',
-                            description='Descrição da palestra.')
-        talk.speakers.add(self.speaker)
-        
-        self.assertEqual('Orlando Xavier', talk.get_speakers())
 
 
 class TalkListGetEmpty(TestCase):
