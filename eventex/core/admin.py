@@ -35,7 +35,20 @@ class SpeakerModelAdmin(admin.ModelAdmin):
     phone.short_description = 'telefone'
 
 
-class ActivityModelAdmin(admin.ModelAdmin):
+class TalkModelAdmin(admin.ModelAdmin):
+    list_display = ['title', 'start', 'get_speakers']
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        return qs.filter(course=None)
+
+    def get_speakers(self, obj):
+        return ', '.join([speaker.name for speaker in obj.speakers.all()])
+
+    get_speakers.short_description = 'palestrante(s)'
+
+
+class CourseModelAdmin(admin.ModelAdmin):
     list_display = ['title', 'start', 'get_speakers']
 
     def get_speakers(self, obj):
@@ -45,5 +58,5 @@ class ActivityModelAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Speaker, SpeakerModelAdmin)
-admin.site.register(Talk, ActivityModelAdmin)
-admin.site.register(Course, ActivityModelAdmin)
+admin.site.register(Talk, TalkModelAdmin)
+admin.site.register(Course, CourseModelAdmin)
