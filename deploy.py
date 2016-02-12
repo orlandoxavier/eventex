@@ -1,4 +1,4 @@
-from subprocess import getoutput, call
+from subprocess import getoutput
 from sys import argv
 
 if len(argv) < 2:
