@@ -19,7 +19,7 @@ cmd_push_github = 'git push -u origin master'
 def heroku_push():
     print(cmd_push_heroku)
     heroku_output = getoutput(cmd_push_heroku)
-
+    print(heroku_output)
     if 'time out' in heroku_output \
             or 'fail' in heroku_output \
             or 'error' in heroku_output:
@@ -29,6 +29,7 @@ def heroku_push():
 def github_push():
     print(cmd_push_github)
     github_output = getoutput(cmd_push_github)
+    print(github_output)
 
     if 'time out' in github_output \
             or 'fail' in github_output \
