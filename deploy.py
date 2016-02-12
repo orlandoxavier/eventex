@@ -7,9 +7,20 @@ if len(argv) < 2:
 
 commit_message = argv[1].replace('"', '')
 retry_if_failed = False
+heroku_deploy = True
+github_deploy = True
 
-if argv[2] and argv[2].isnumeric():
+# Faz retentar em caso de falha
+if 'auto-retry' in argv:
     retry_if_failed = True
+
+# Desativa deploy no heroku
+if 'heroku=off' in argv:
+    heroku_deploy = False
+
+# Desativa deploy no github
+if 'github=off' in argv:
+    github_deploy = False
 
 cmd_add = 'git add .'
 cmd_commit = 'git commit -m "{}"'.format(commit_message)
@@ -17,6 +28,9 @@ cmd_push_heroku = 'git push heroku master --force'
 cmd_push_github = 'git push -u origin master'
 
 def heroku_push():
+    if not heroku_deploy:
+        return True
+
     print(cmd_push_heroku)
     heroku_output = getoutput(cmd_push_heroku)
     print(heroku_output)
@@ -27,6 +41,9 @@ def heroku_push():
     return True
 
 def github_push():
+    if not github_deploy:
+        return True
+
     print(cmd_push_github)
     github_output = getoutput(cmd_push_github)
     print(github_output)
