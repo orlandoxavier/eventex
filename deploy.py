@@ -5,7 +5,7 @@ if len(argv) < 2:
     print('A mensagem de commit é requerida.')
     exit(0)
 
-commit_message = argv[1]
+commit_message = argv[1].replace('"', '')
 retry_if_failed = False
 
 if argv[2] and argv[2].isnumeric():
